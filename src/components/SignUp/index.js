@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signUpUserStart } from "./../../redux/User/user.actions";
+import FormWrapper from "../FormWrapper";
+import FormInput from "../forms/FormInput";
+import FormButton from "../forms/FormButton";
 
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
@@ -52,36 +55,35 @@ function SignUp() {
   };
 
   return (
-    <div className="form">
+    <FormWrapper title="Register">
       <form onSubmit={handleFormSubmit}>
-        <h1>REGISTER</h1>
-        <input
+        <FormInput
           type="text"
           placeholder="displayName"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
         />
-        <input
+        <FormInput
           type="email"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
+        <FormInput
           type="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
+        <FormInput
           type="password"
           placeholder="ConfirmPassword"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">submit</button>
+        <FormButton type="submit">submit</FormButton>
       </form>
-    </div>
+    </FormWrapper>
   );
 }
 

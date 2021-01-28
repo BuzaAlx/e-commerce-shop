@@ -1,0 +1,26 @@
+.formWrapper {
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  margin: 4rem auto 6rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: rgba($color: #0f9b88, $alpha: 0.2);
+
+  .wrap {
+    padding: 15px;
+    color: white;
+
+    h2 {
+      font-size: 2.2rem;
+      line-height: 1;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0 auto 3rem;
+    }
+  }
+}

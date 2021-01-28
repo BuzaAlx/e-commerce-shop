@@ -1,0 +1,11 @@
+.links {
+  margin-top: 1rem;
+  text-align: center;
+  a {
+    color: rgb(177, 177, 177);
+    font-size: 1.3rem;
+    &:hover {
+      color: rgb(150, 150, 150);
+    }
+  }
+}

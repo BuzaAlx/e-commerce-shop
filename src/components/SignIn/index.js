@@ -1,35 +1,63 @@
 import React, { useState, useEffect } from "react";
+import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { emailSignInStart } from "../../redux/User/user.actions";
+import { useHistory, Link } from "react-router-dom";
+import FormWrapper from "../FormWrapper";
+import FormInput from "../forms/FormInput";
+import FormButton from "../forms/FormButton";
+
+const mapState = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(mapState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(emailSignInStart({ email, password }));
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      resetForm();
+      history.push("/");
+    }
+  }, [currentUser]);
+
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
   };
 
   return (
-    <div className="form">
+    <FormWrapper title="Login">
       <form onSubmit={handleSubmit}>
-        <h1>LOGIN</h1>
-        <input
+        <FormInput
           value={email}
           type="text"
           placeholder="email"
           type="email"
           onChange={({ target }) => setEmail(target.value)}
         />
-        <input
+        <FormInput
           value={password}
           type="text"
           placeholder="password"
           type="password"
           onChange={({ target }) => setPassword(target.value)}
         />
-        <button type="submit">submit</button>
+        <FormButton type="submit">submit</FormButton>
       </form>
-    </div>
+      <div className="links">
+        <Link to="/recovery">Reset Password</Link>
+      </div>
+    </FormWrapper>
   );
 }
 

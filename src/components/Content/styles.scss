@@ -1,8 +1,9 @@
 .product {
-  background: url(./fon.jpg);
+  // background: url(./fon.jpg);
   min-height: calc(100vh - 7rem);
   color: white;
   position: relative;
+  overflow: hidden;
 }
 
 .product__row {
@@ -44,6 +45,8 @@
   height: 17rem;
   object-fit: cover;
   box-shadow: 10px 10px rgba(0, 255, 255, 0.3);
+  background-color: black;
+  transition: all 0.2s ease;
 }
 
 .product__images-box {
@@ -124,9 +127,9 @@
 
 .fade-anim {
   position: relative;
-  -webkit-animation: fadeAn 2s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation: fadeAn 0.8s reverse; /* Chrome, Safari, Opera */
   -webkit-animation-delay: none; /* Chrome, Safari, Opera */
-  animation: fadeAn 2s reverse;
+  animation: fadeAn 0.8s reverse;
   animation-delay: none;
 }
 

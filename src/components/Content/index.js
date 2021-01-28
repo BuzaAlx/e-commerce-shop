@@ -5,7 +5,7 @@ import "./styles.scss";
 
 function Content() {
   return (
-    <section className="slider">
+    <section className="content">
       <div className="product">
         <div className="container">
           <div className="product__row">

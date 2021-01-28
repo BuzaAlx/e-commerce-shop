@@ -73,3 +73,14 @@ a:hover {
     color: black;
   }
 }
+
+.mainLoyoutContent {
+  background: linear-gradient(0.25turn, #e66465, #9198e5);
+}
+
+.secondaryLoyoutContent {
+  border-top: 1px solid transparent;
+  // background: linear-gradient(0.25turn, #0b5485, #24837b);
+  background: url(backgrounds/fon.jpg);
+  min-height: calc(100vh - 7rem);
+}
