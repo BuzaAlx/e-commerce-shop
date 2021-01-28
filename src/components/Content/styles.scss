@@ -1,0 +1,140 @@
+.product {
+  background: url(./fon.jpg);
+  min-height: calc(100vh - 7rem);
+  color: white;
+  position: relative;
+}
+
+.product__row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.product__column-description {
+  max-width: 400px;
+
+  display: flex;
+  align-items: center;
+}
+.product__description {
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid rgba(7, 243, 243, 0.7);
+  padding: 2rem;
+}
+
+.product__title {
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  color: rgba(7, 243, 243, 0.7);
+  text-transform: uppercase;
+}
+.product__subtitle {
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  color: rgb(212, 204, 204);
+}
+
+// .product__image-box {
+//   flex-grow: 1;
+//   align-self: center;
+// }
+
+.product__image {
+  width: 32rem;
+  height: 17rem;
+  object-fit: cover;
+  box-shadow: 10px 10px rgba(0, 255, 255, 0.3);
+}
+
+.product__images-box {
+  display: flex;
+  flex-direction: column;
+
+  width: 64rem;
+  margin-top: 6rem;
+  gap: 2.5rem;
+  //
+}
+
+.product__link {
+  margin-top: 2rem;
+  display: inline-block;
+}
+///////////////////
+
+/////////
+
+.product__image-container:nth-child(even) {
+  position: relative;
+  -webkit-animation: toLeft 2s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation-delay: none; /* Chrome, Safari, Opera */
+  animation: toLeft 2s reverse;
+  animation-delay: none;
+}
+
+.product__image-container:nth-child(odd) {
+  align-self: flex-end;
+  position: relative;
+  -webkit-animation: toRight 2s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation-delay: none; /* Chrome, Safari, Opera */
+  animation: toRight 2s reverse;
+  animation-delay: none;
+}
+
+.pointer-icon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  animation: loop 2s infinite;
+  animation-delay: none;
+}
+@keyframes loop {
+  0% {
+    transform: translateY(0);
+  }
+  67% {
+    transform: translateY(-33%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes toLeft {
+  from {
+    opacity: 1;
+    left: 0px;
+  }
+  to {
+    opacity: 0;
+    left: 100px;
+  }
+}
+
+@keyframes toRight {
+  from {
+    opacity: 1;
+    right: 0px;
+  }
+  to {
+    opacity: 0;
+    right: 50px;
+  }
+}
+
+.fade-anim {
+  position: relative;
+  -webkit-animation: fadeAn 2s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation-delay: none; /* Chrome, Safari, Opera */
+  animation: fadeAn 2s reverse;
+  animation-delay: none;
+}
+
+@keyframes fadeAn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

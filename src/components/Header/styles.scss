@@ -1,0 +1,98 @@
+.header {
+  border-bottom: 1px solid black;
+  background-color: white;
+  font-size: 1.6rem;
+  font-family: "Work Sans", sans-serif;
+}
+
+.header__row {
+  display: flex;
+  justify-content: space-between;
+  height: 7rem;
+}
+
+.header__navigation {
+  display: flex;
+  ul {
+    align-self: center;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+
+    a {
+      color: black;
+      &:hover {
+        color: rgb(130, 0, 0);
+      }
+    }
+    li {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.logo-container {
+  width: 70px;
+  img {
+    width: 100%;
+  }
+}
+
+.user-panel {
+  display: flex;
+  ul {
+    align-self: center;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    a {
+      color: black;
+      &:hover {
+        color: rgb(130, 0, 0);
+      }
+    }
+  }
+  li {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+  }
+}
+
+.user-panel__basket-link {
+  position: relative;
+  color: black;
+}
+
+.user-panel__number-goods {
+  width: 15px;
+  height: 15px;
+  background-color: rebeccapurple;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  color: white;
+  text-align: center;
+}
+
+li {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 0;
+    transition: all 0.4s ease;
+    bottom: -10px;
+    left: 0;
+    background-color: black;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
