@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./styles.scss";
 import { signOutUserStart } from "./../../redux/User/user.actions";
-import { FiRotateCw } from "react-icons/fi";
+// import { FiRotateCw } from "react-icons/fi";
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -31,7 +31,7 @@ function Header() {
                 <Link>Page</Link>
               </li>
               <li>
-                <Link>Shop</Link>
+                <Link to="/search">Search</Link>
               </li>
               <li>
                 <Link>About Us</Link>

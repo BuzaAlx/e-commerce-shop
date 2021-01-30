@@ -6,12 +6,15 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Recovery from "./pages/Recovery";
 import Admin from "./pages/Admin";
+import Search from "./pages/Search";
 import { useDispatch } from "react-redux";
 import { checkUserSession } from "./redux/User/user.actions";
 import MainLayout from "./loyouts/MainLoyout";
 import SecondaryLoyout from "./loyouts/SecondaryLoyout";
+import AdminLoyout from "./loyouts/AdminLoyout";
 import WithAdminAuth from "./hoc/withAdminAuth";
 import WithAuth from "./hoc/withAuth";
+import AdminToolbar from "./components/AdminToolbar";
 
 import "./default.scss";
 
@@ -23,12 +26,13 @@ const App = (props) => {
 
   return (
     <div className="App">
+      <AdminToolbar />
       <Switch>
         <Route path="/admin">
           <WithAdminAuth>
-            <SecondaryLoyout>
+            <AdminLoyout>
               <Admin />
-            </SecondaryLoyout>
+            </AdminLoyout>
           </WithAdminAuth>
         </Route>
         <Route exact path="/">
@@ -36,6 +40,13 @@ const App = (props) => {
             <Home />
           </MainLayout>
         </Route>
+
+        <Route exact path="/search">
+          <MainLayout>
+            <Search />
+          </MainLayout>
+        </Route>
+
         <Route path="/register">
           <SecondaryLoyout>
             <Register />

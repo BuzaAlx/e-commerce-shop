@@ -1,0 +1,16 @@
+.admintoolbar {
+  background-color: black;
+  div {
+    height: 2rem;
+    line-height: 2rem;
+  }
+  a {
+    color: white;
+    float: right;
+    font-size: 1.3rem;
+    &:hover {
+      color: black;
+      background-color: white;
+    }
+  }
+}

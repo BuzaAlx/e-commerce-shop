@@ -80,23 +80,25 @@
   text-align: center;
 }
 
-li {
-  position: relative;
-  &::after {
-    position: absolute;
-    content: "";
-    height: 1px;
-    width: 0;
-    transition: all 0.4s ease;
-    bottom: -10px;
-    left: 0;
-    background-color: black;
+.header__navigation,
+.user-panel {
+  li {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      height: 1px;
+      width: 0;
+      transition: all 0.4s ease;
+      bottom: -10px;
+      left: 0;
+      background-color: black;
+    }
+    &:hover::after {
+      width: 100%;
+    }
   }
-  &:hover::after {
-    width: 100%;
+  span {
+    cursor: pointer;
   }
-}
-
-span {
-  cursor: pointer;
 }
