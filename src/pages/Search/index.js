@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles.scss";
-import ProductResults from "../../components/ProductResults";
+import ProductsResults from "../../components/ProductsResults";
 
 function Search() {
   return (
     <div className="searchPage container">
-      <ProductResults />
+      <ProductsResults />
     </div>
   );
 }

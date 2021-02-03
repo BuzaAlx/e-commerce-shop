@@ -10,12 +10,14 @@ const UserProfile = (props) => {
     <div className="userProfile">
       <ul>
         <li>
-          <div className="img">
+          <div className="userProfile__img">
             <img src={userIMG} />
           </div>
         </li>
         <li>
-          <span className="displayName">{displayName && displayName}</span>
+          <span className="userProfile__displayName">
+            {displayName && displayName}
+          </span>
         </li>
       </ul>
     </div>

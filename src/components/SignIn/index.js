@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { emailSignInStart } from "../../redux/User/user.actions";
 import { useHistory, Link } from "react-router-dom";
+
+import { emailSignInStart } from "../../redux/User/user.actions";
 import FormWrapper from "../FormWrapper";
 import FormInput from "../forms/FormInput";
 import FormButton from "../forms/FormButton";
@@ -14,6 +15,7 @@ const mapState = ({ user }) => ({
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
@@ -54,7 +56,14 @@ function SignIn() {
         />
         <FormButton type="submit">submit</FormButton>
       </form>
-      <div className="links">
+
+      <div className="register-link">
+        <p>
+          Haven't an account yet <Link to="/register">Sign Up</Link>
+        </p>
+      </div>
+
+      <div className="recovery-link">
         <Link to="/recovery">Reset Password</Link>
       </div>
     </FormWrapper>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { signUpUserStart } from "./../../redux/User/user.actions";
 import FormWrapper from "../FormWrapper";
 import FormInput from "../forms/FormInput";
@@ -83,6 +84,11 @@ function SignUp() {
         />
         <FormButton type="submit">submit</FormButton>
       </form>
+      <div className="login-link">
+        <p>
+          Already have an account? <Link to="/login">Sign In</Link>
+        </p>
+      </div>
     </FormWrapper>
   );
 }

@@ -7,10 +7,10 @@ body {
   padding: 0;
   margin: 0;
 }
-* {
-  padding: 0;
-  margin: 0;
-}
+// * {
+//   padding: 0;
+//   margin: 0;
+// }
 
 html,
 body,
@@ -75,17 +75,20 @@ a:hover {
 }
 
 .mainLoyoutContent {
-  background: linear-gradient(0.25turn, #e66465, #9198e5);
-}
-
-.secondaryLoyoutContent {
+  background: linear-gradient(0.25turn, #383838, #9198e5);
   border-top: 1px solid transparent;
-  // background: linear-gradient(0.25turn, #0b5485, #24837b);
-  background: url(backgrounds/fon.jpg);
+  border-bottom: 1px solid transparent;
   min-height: calc(100vh - 7rem);
 }
 
-////////////////////////////@at-root
+.secondaryLoyoutContent {
+  background: url(backgrounds/fon.jpg) left 0% top 0% / 60%;
+  min-height: calc(100vh - 7rem);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+////// ADMIN PANEL
 
 .controlPanel {
   position: relative;
@@ -112,4 +115,66 @@ a:hover {
 
 .adminLayout {
   height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
+}
+
+//////////////// ANIMATIONS
+
+.fade-anim {
+  position: relative;
+  -webkit-animation: fadeAn 0.8s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation-delay: none; /* Chrome, Safari, Opera */
+  animation: fadeAn 0.8s reverse;
+  animation-delay: none;
+}
+
+@keyframes fadeAn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.transition-left-anim {
+  position: relative;
+  -webkit-animation: transitionLeft 0.8s reverse; /* Chrome, Safari, Opera */
+  -webkit-animation-delay: none; /* Chrome, Safari, Opera */
+  animation: transitionLeft 0.8s reverse;
+  animation-delay: none;
+}
+
+@keyframes transitionLeft {
+  from {
+    transform: translate(0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-100%);
+    opacity: 0;
+  }
+}
+
+///// SOME
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+////variables
+
+.text-alarm {
+  font-size: 2.1rem;
+  color: rgb(223, 95, 64);
+}
+
+.text-secondary {
+  font-size: 1.5rem;
+  color: rgb(172, 155, 151);
 }

@@ -15,6 +15,8 @@ import AdminLoyout from "./loyouts/AdminLoyout";
 import WithAdminAuth from "./hoc/withAdminAuth";
 import WithAuth from "./hoc/withAuth";
 import AdminToolbar from "./components/AdminToolbar";
+import ProductDetails from "./pages/ProductDetails";
+import Card from "./pages/Card";
 
 import "./default.scss";
 
@@ -40,13 +42,21 @@ const App = (props) => {
             <Home />
           </MainLayout>
         </Route>
-
         <Route exact path="/search">
-          <MainLayout>
+          <SecondaryLoyout>
             <Search />
-          </MainLayout>
+          </SecondaryLoyout>
         </Route>
-
+        <Route path="/search/:filterType">
+          <SecondaryLoyout>
+            <Search />
+          </SecondaryLoyout>
+        </Route>
+        <Route path="/product/:productID">
+          <SecondaryLoyout>
+            <ProductDetails />
+          </SecondaryLoyout>
+        </Route>
         <Route path="/register">
           <SecondaryLoyout>
             <Register />
@@ -62,11 +72,14 @@ const App = (props) => {
             <Recovery />
           </SecondaryLoyout>
         </Route>
+        <Route path="/card">
+          <SecondaryLoyout>
+            <Card />
+          </SecondaryLoyout>
+        </Route>
         <Route path="/dashboard">
           <WithAuth>
-            <SecondaryLoyout>
-              <Dashboard />
-            </SecondaryLoyout>
+            <Dashboard />
           </WithAuth>
         </Route>
       </Switch>

@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(212, 212, 212, 0.678);
   background-color: white;
   font-size: 1.6rem;
   font-family: "Work Sans", sans-serif;
@@ -24,7 +24,7 @@
     a {
       color: black;
       &:hover {
-        color: rgb(130, 0, 0);
+        color: rgba(69, 42, 187, 0.767);
       }
     }
     li {
@@ -52,7 +52,7 @@
     a {
       color: black;
       &:hover {
-        color: rgb(130, 0, 0);
+        color: rgba(69, 42, 187, 0.767);
       }
     }
   }
@@ -91,11 +91,23 @@
       width: 0;
       transition: all 0.4s ease;
       bottom: -10px;
-      left: 0;
-      background-color: black;
+      left: 50%;
+      background-color: rgba(100, 100, 100, 0.678);
     }
-    &:hover::after {
-      width: 100%;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 1px;
+      width: 0;
+      transition: all 0.4s ease;
+      bottom: -10px;
+      right: 50%;
+      background-color: rgba(100, 100, 100, 0.678);
+    }
+
+    &:hover::after,
+    &:hover::before {
+      width: 50%;
     }
   }
   span {

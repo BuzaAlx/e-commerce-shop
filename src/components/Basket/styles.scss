@@ -1,0 +1,52 @@
+.checkout {
+  margin: 2rem auto;
+
+  h1 {
+    display: block;
+    width: 100%;
+  }
+  h1,
+  p {
+    text-align: center;
+  }
+
+  .checkoutHeader {
+    border-bottom: 1px solid #000;
+  }
+
+  .card {
+    max-width: 100rem;
+    margin: 0 auto;
+
+    table {
+      width: 100%;
+    }
+  }
+
+  .checkoutHeader,
+  .card {
+    width: 100%;
+    text-align: left;
+
+    th,
+    td {
+      width: 22%;
+    }
+
+    .cardItem {
+      td img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  .cardBtns {
+    display: block;
+    width: 100%;
+  }
+
+  .cardBtn {
+    cursor: pointer;
+  }
+}

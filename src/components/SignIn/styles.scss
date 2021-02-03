@@ -1,4 +1,4 @@
-.links {
+.recovery-link {
   margin-top: 1rem;
   text-align: center;
   a {
@@ -7,5 +7,16 @@
     &:hover {
       color: rgb(150, 150, 150);
     }
+  }
+}
+
+.register-link {
+  p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  a {
+    color: wheat;
+    font-weight: 600;
   }
 }

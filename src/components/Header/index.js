@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./styles.scss";
 import { signOutUserStart } from "./../../redux/User/user.actions";
+import { selectCardItemsCount } from "../../redux/Card/card.selectors";
 // import { FiRotateCw } from "react-icons/fi";
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
+  totalNumCardItems: selectCardItemsCount(state),
 });
 
 function Header() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(mapState);
+  const { currentUser, totalNumCardItems } = useSelector(mapState);
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -22,14 +24,17 @@ function Header() {
     <header className="header">
       <div className="container">
         <div className="header__row">
+          <div className="logo-container">
+            <Link to="/">
+              <img src="logo.jpg" alt="logo" />
+            </Link>
+          </div>
           <nav className="header__navigation">
             <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link>Page</Link>
-              </li>
+
               <li>
                 <Link to="/search">Search</Link>
               </li>
@@ -49,9 +54,11 @@ function Header() {
           </div> */}
           <div className="user-panel">
             <ul>
-              <Link className="user-panel__basket-link">
+              <Link to="/card" className="user-panel__basket-link">
                 <FaShoppingCart size={25} />
-                <div className="user-panel__number-goods">5</div>
+                <div className="user-panel__number-goods">
+                  {totalNumCardItems}
+                </div>
               </Link>
 
               {currentUser && (
