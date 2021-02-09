@@ -1,0 +1,20 @@
+.formRow {
+  display: inline-block;
+  width: 100%;
+
+  .checkbox__label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    input {
+      margin: 2px;
+    }
+  }
+}
+
+.checkbox__inner {
+  display: flex;
+  width: 100%;
+  font-size: 1.3rem;
+  margin-top: 20px;
+}

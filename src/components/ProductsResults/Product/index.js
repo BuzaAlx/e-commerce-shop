@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -6,11 +6,22 @@ import { MdFavoriteBorder } from "react-icons/md";
 
 import { addProduct } from "../../../redux/Card/card.actions";
 import StarRating from "../../StarRating";
+import SizePanel from "../../SizePanel";
+import ProductMark from "../../ProductMark";
 
 const Product = (product) => {
+  const [selectedSize, setSelectedSize] = useState("M");
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const { documentID, productThumbnail, productName, productPrice } = product;
+  const {
+    documentID,
+    productThumbnail,
+    productName,
+    productPrice,
+    productMark,
+    availableSizes,
+  } = product;
 
   if (
     !documentID ||
@@ -27,6 +38,8 @@ const Product = (product) => {
     history.push("/card");
   };
 
+  const sizes = ["XS", "S", "M", "L", "XL", "XXL"]; //TODO store it in db product , if abailavle return size is NON return "line-through"
+
   return (
     <div className="list_product">
       <div className="thumb">
@@ -35,48 +48,56 @@ const Product = (product) => {
         </Link>
       </div>
       <div className="details">
-        <ul>
-          <li>
+        {/* ///////////////// */}
+        <div className="list-product__wrapper">
+          <div className="list_product__title">
             <span className="name">
               <Link to={`/product/${documentID}`}>
                 Спортивный костюм Adidas W 3S Tr Ts GM5581 L Crered/Hazros
                 (4064045349476)
               </Link>
             </span>
-          </li>
-          <li>
-            <div className="stars-rating">
-              <StarRating />
-            </div>
-          </li>
-          <li>
+          </div>
+          <div className="list-product__stars-rating">
+            <StarRating />
+          </div>
+        </div>
+        {/* //////////////////// */}
+        <div className="list-product__wrapper list-product__wrapper--bottom">
+          <div>
             <span className="previousPrice text-secondary ">2000 $</span>
-          </li>
-          <li>
+          </div>
+          <div>
             <span className="price text-alarm">{productPrice}$</span>
-          </li>
-          <li>
+          </div>
+          <div className="list-product__row">
             <span className="available">Is available</span>
-          </li>
-          <li>
-            <div className="add-to-card">
-              <div
-                className="add-to-card__link"
-                onClick={() => handleAddToCard(product)}
-              >
-                <AiOutlineShoppingCart size="30" />
-              </div>
-            </div>
-          </li>
-          <li>
-            <span className="add-to-favorites">
-              <MdFavoriteBorder size="30" />
-            </span>
-          </li>
-          <li>
-            <span className="top-sales-mark">top sales</span>
-          </li>
-        </ul>
+            <SizePanel
+              sizes={availableSizes}
+              setSelectedSize={setSelectedSize}
+              selectedSize={selectedSize}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="add-to-card">
+        <div
+          className="add-to-card__link"
+          onClick={() => handleAddToCard({ ...product, size: selectedSize })}
+        >
+          <AiOutlineShoppingCart size="30" />
+        </div>
+      </div>
+      <div>
+        <span className="add-to-favorites">
+          <MdFavoriteBorder size="30" />
+        </span>
+      </div>
+      <div>
+        <span className="top-sales-mark">
+          <ProductMark type={productMark} />
+        </span>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
 } from "../../redux/Card/card.selectors";
 import { createStructuredSelector } from "reselect";
 import "./styles.scss";
+import { Link } from "react-router-dom";
 import FormButton from "../forms/FormButton";
 import Item from "./Item";
 import { fetchProductsStart } from "../../redux/Products/products.actions";
@@ -22,7 +23,7 @@ function Basket() {
   const NoItemsMarkUp = () => <p>You have no items in your card</p>;
 
   return (
-    <div className="checkout" style={{ backgroundColor: "white" }}>
+    <div className="checkout">
       <h1>Basket</h1>
 
       <div className="card">
@@ -41,6 +42,7 @@ function Basket() {
                       <th>Product</th>
                       <th>Description</th>
                       <th>quantity</th>
+                      <th>size</th>
                       <th>price</th>
                       <th>remove</th>
                     </tr>
@@ -70,7 +72,7 @@ function Basket() {
                 >
                   <tr align="right">
                     <td>
-                      <h3>Total:{cardItemsTotal}</h3>
+                      <h3>Total:{cardItemsTotal}$</h3>
                     </td>
                   </tr>
                   <tr>
@@ -78,12 +80,17 @@ function Basket() {
                       <tbody>
                         <tr>
                           <td>
-                            <FormButton onClick={() => history.goBack()}>
+                            <Link
+                              className="table-button btn"
+                              onClick={() => history.push("/search")}
+                            >
                               Continue Shopping
-                            </FormButton>
+                            </Link>
                           </td>
                           <td>
-                            <FormButton>checkout</FormButton>
+                            <Link className="table-button btn table-button--checkout">
+                              checkout
+                            </Link>
                           </td>
                         </tr>
                       </tbody>

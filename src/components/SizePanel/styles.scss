@@ -1,0 +1,23 @@
+.size-panel {
+  display: flex;
+  gap: 5px;
+  padding: 3px;
+  margin-left: 10px;
+
+  .size-panel__size {
+    width: 2.5rem;
+    line-height: 2.5rem;
+    background-color: #f5f5f5;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .active {
+    border: 1px solid rgba(138, 137, 137, 0.678);
+  }
+  .unavailable {
+    text-decoration: line-through;
+    background-color: rgba(240, 255, 255, 0.089);
+  }
+}

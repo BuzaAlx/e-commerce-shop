@@ -17,7 +17,7 @@ function Content() {
                   roots in a priece of classical Latin literature 45BC,making it
                   over 2000 years ago.Richard McClintock,a Latin
                 </p>
-                <Link className="product__link btn" to="/search">
+                <Link className="product__link" to="/search">
                   View Shop
                 </Link>
               </div>

@@ -1,3 +1,9 @@
 .rating {
-  color: rgb(255, 102, 0);
+  .rating__icons {
+    color: rgb(255, 102, 0);
+  }
+  .rating__rewiews-number {
+    margin-top: 0;
+    color: #797878;
+  }
 }

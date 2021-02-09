@@ -5,7 +5,8 @@ import { AiFillStar } from "react-icons/ai";
 
 const rating = new Array(5).fill(<AiOutlineStar size="20" />);
 
-function StarRating({ productRate = null }) {
+function StarRating({ productRate = null, title_visibility, documentID }) {
+  const [firebaseRating, setFirebaseRating] = useState(null);
   const [stars, setStars] = useState(rating);
   const [selectedStar, setSelectedStar] = useState(productRate);
 
@@ -20,11 +21,22 @@ function StarRating({ productRate = null }) {
     setStars(newRating);
   }, [selectedStar]);
 
+  const handleClick = (index) => {
+    setSelectedStar(index + 1);
+  };
+
   return (
     <div className="rating">
-      {stars.map((obj, index) => (
-        <span onClick={() => setSelectedStar(index + 1)}>{obj}</span>
-      ))}
+      <div className="rating__icons">
+        {stars?.map((obj, index) => (
+          <span className="rating__icon" onClick={() => handleClick(index)}>
+            {obj}
+          </span>
+        ))}
+      </div>
+      {title_visibility && (
+        <p className="rating__rewiews-number">3.5 from 272 reviews</p>
+      )}
     </div>
   );
 }

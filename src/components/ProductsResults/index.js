@@ -74,9 +74,8 @@ function ProductsResults({}) {
   return (
     <div className="products">
       <h1 className="transition-left-anim">Browse Products</h1>
-
+      <FormSelect {...configFilters} className="secondary" />
       <div className="productsResults fade-anim">
-        <FormSelect {...configFilters} className="secondary" />
         {data.map((product, pos) => {
           const { productThumbnail, productName, productPrice } = product;
           if (

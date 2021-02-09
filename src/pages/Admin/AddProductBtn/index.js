@@ -7,12 +7,16 @@ import Modal from "../../../components/Modal";
 import FormInput from "../../../components/forms/FormInput";
 import FormSelect from "../../../components/forms/FormSelect";
 import FormButton from "../../../components/forms/FormButton";
+import FormCheckbox from "../../../components/forms/FormCheckbox";
 import { addProductStart } from "../../../redux/Products/products.actions";
 
 function AddProductBtn() {
+  const [availableSizes, setAvailableSizes] = useState([]);
   const [productCategory, setProductCategory] = useState("mens");
+  const [productMark, setProductMark] = useState("new");
   const [productName, setProductName] = useState("");
   const [productThumbnail, setProductThumbnail] = useState("");
+  const [additionalPhotos, setadditionalPhotos] = useState(["", "", ""]);
   const [productPrice, setProductPrice] = useState(0);
   const [productDesc, setProductDesc] = useState("");
 
@@ -29,24 +33,38 @@ function AddProductBtn() {
   const resetForm = () => {
     setHideModal(true);
     setProductCategory("mens");
+    setProductMark("new");
     setProductName("");
     setProductThumbnail("");
     setProductPrice(0);
     setProductDesc("");
+    setadditionalPhotos(["", "", ""]);
+    setAvailableSizes([]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(
       addProductStart({
         productCategory,
+        productMark,
         productName,
         productThumbnail,
         productPrice,
         productDesc,
+        additionalPhotos,
+        availableSizes,
       })
     );
     resetForm();
+  };
+
+  const configCheckbox = {
+    label: "Select available sizes",
+    options: ["XS", "S", "M", "L", "XL", "XXL"],
+    handleChange: setAvailableSizes,
+    sizes: availableSizes,
   };
 
   return (
@@ -66,20 +84,42 @@ function AddProductBtn() {
           <form onSubmit={handleSubmit}>
             <h2>Add new product</h2>
 
-            <FormSelect
-              label="Category"
-              options={[
-                {
-                  value: "mens",
-                  name: "Mens",
-                },
-                {
-                  value: "womens",
-                  name: "Womens",
-                },
-              ]}
-              handleChange={(e) => setProductCategory(e.target.value)}
-            />
+            <div className="formGroup">
+              <FormSelect
+                label="Category"
+                options={[
+                  {
+                    value: "mens",
+                    name: "Mens",
+                  },
+                  {
+                    value: "womens",
+                    name: "Womens",
+                  },
+                ]}
+                handleChange={(e) => setProductCategory(e.target.value)}
+              />
+              <FormSelect
+                label="Product Mark"
+                options={[
+                  {
+                    value: "new",
+                    name: "New Product",
+                  },
+                  {
+                    value: "top-sales",
+                    name: "Top Sales",
+                  },
+                  {
+                    value: "ends",
+                    name: "Ends",
+                  },
+                ]}
+                handleChange={(e) => setProductMark(e.target.value)}
+              />
+
+              <FormCheckbox {...configCheckbox} />
+            </div>
 
             <FormInput
               label="Name"
@@ -87,6 +127,26 @@ function AddProductBtn() {
               value={productName}
               handleChange={(e) => setProductName(e.target.value)}
             />
+
+            <div className="formGroup">
+              {Array(3)
+                .fill("")
+                .map((_, i) => {
+                  return (
+                    <FormInput
+                      required
+                      label={`Additional image URL `}
+                      type="url"
+                      value={additionalPhotos[i]}
+                      handleChange={(e) => {
+                        let stateCopy = [...additionalPhotos];
+                        stateCopy[i] = e.target.value;
+                        setadditionalPhotos(stateCopy);
+                      }}
+                    />
+                  );
+                })}
+            </div>
 
             <FormInput
               label="Main image URL"

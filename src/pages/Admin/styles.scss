@@ -20,6 +20,14 @@
       }
     }
   }
+  .formGroup {
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    .formRow {
+      width: auto;
+    }
+  }
 }
 
 .manageProducts {

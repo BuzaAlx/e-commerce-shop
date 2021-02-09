@@ -6,9 +6,8 @@
   h1 {
     font-family: "Montserrat";
     text-transform: uppercase;
-    font-size: 200px;
-    margin-bottom: 10rem;
-    margin-top: 10rem;
+    font-size: 100px;
+
     color: #487b68cc;
   }
   .productsResults {
@@ -16,14 +15,16 @@
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 
 .list_product {
   position: relative;
-  width: 32.4333333333%;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  // width: 32.4333333333%;
+  // margin-bottom: 1rem;
+  // margin-right: 1rem;
+  flex-basis: 32.5%;
   border: 1px solid bisque;
   background-color: #f9f9f9db;
   display: flex;
@@ -47,96 +48,95 @@
     }
   }
   .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
     padding: 1.5rem;
-    display: block;
     width: 100%;
     margin: 0 auto;
 
-    ul,
-    ul li {
-      padding: 0;
-      margin: 0;
+    a {
+      color: black;
     }
 
-    ul {
-      li {
-        list-style-type: none;
-        width: 100%;
-        display: block;
-        text-align: left;
-        margin: 0 0 0.5rem;
+    .name {
+      font-size: 1.6rem;
+      line-height: 1.2;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.24);
+    }
 
-        a {
-          color: black;
-        }
+    .available {
+      color: #00a046;
+      font-size: 1.5rem;
+    }
 
-        .name {
-          font-size: 1.6rem;
-          line-height: 1.2;
-          font-weight: 400;
-          color: rgba(0, 0, 0, 0.24);
-        }
+    .price {
+      display: block;
+      padding: 1rem 0;
+      line-height: 1;
+      font-weight: 400;
+      padding-top: 0;
+    }
+    .previousPrice {
+      text-decoration: line-through;
+    }
+  }
+  .add-to-card {
+    margin: 2rem 0 0 0;
+    text-align: end;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    cursor: pointer;
 
-        .available {
-          color: #00a046;
-          font-size: 1.5rem;
-        }
-
-        .price {
-          display: block;
-          // color: rgb(0, 0, 0);
-          // font-size: 1.7rem;
-          padding: 1rem 0;
-          line-height: 1;
-          font-weight: 400;
-          padding-top: 0;
-        }
-        .previousPrice {
-          text-decoration: line-through;
-        }
-
-        .add-to-card {
-          margin: 2rem 0 0 0;
-          text-align: end;
-          position: absolute;
-          bottom: 1.5rem;
-          right: 2rem;
-          cursor: pointer;
-
-          .add-to-card__link {
-            color: #00a046;
-            transition: all 0.2s ease;
-            &:hover {
-              transform: rotate(15deg) scale(1.1);
-            }
-          }
-        }
-        .top-sales-mark {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          line-height: 3rem;
-          padding: 0 1.5rem;
-          background-color: rgba(45, 105, 83, 0.849);
-          color: white;
-          text-transform: uppercase;
-          // border-radius: 2rem;
-        }
-
-        .add-to-favorites {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          color: rgba(45, 105, 83, 0.849);
-          cursor: pointer;
-          background-color: white;
-          border-radius: 50%;
-          padding: 4px;
-          &:hover {
-            color: rgb(71, 180, 67);
-          }
-        }
+    .add-to-card__link {
+      color: #00a046;
+      transition: all 0.2s ease;
+      &:hover {
+        transform: rotate(15deg) scale(1.1);
       }
     }
   }
+  .top-sales-mark {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    line-height: 3rem;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .add-to-favorites {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 8px;
+    right: 8px;
+    color: rgba(45, 105, 83, 0.849);
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
+    padding: 4px;
+    &:hover {
+      color: rgb(71, 180, 67);
+    }
+  }
+  .list-product__wrapper {
+    flex-grow: 1;
+  }
+  .list-product__row {
+    display: flex;
+    align-items: center;
+  }
+  .list-product__wrapper--bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+.list-product__wrapper {
+  flex-grow: 1;
 }

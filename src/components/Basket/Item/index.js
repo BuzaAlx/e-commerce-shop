@@ -13,6 +13,7 @@ const Item = (product) => {
     productName,
     productThumbnail,
     productPrice,
+    size,
     quantity,
     documentID,
   } = product;
@@ -48,6 +49,7 @@ const Item = (product) => {
               onClick={() => handleAddProduct(product)}
             >{` >`}</span>
           </td>
+          <td>{size && size}</td>
           <td>${productPrice}</td>
           <td align="center">
             <span

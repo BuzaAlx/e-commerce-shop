@@ -61,18 +61,18 @@ a:hover {
   margin: 0 auto;
 }
 
-.btn {
-  line-height: 2rem;
-  padding: 1rem 2rem;
-  background-color: black;
-  text-transform: uppercase;
-  color: white;
-  font-size: 1.2rem;
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-}
+// .btn {
+//   line-height: 2rem;
+//   padding: 1rem 2rem;
+//   background-color: black;
+//   text-transform: uppercase;
+//   color: white;
+//   font-size: 1.2rem;
+//   &:hover {
+//     background-color: white;
+//     color: black;
+//   }
+// }
 
 .mainLoyoutContent {
   background: linear-gradient(0.25turn, #383838, #9198e5);
@@ -177,4 +177,25 @@ a:hover {
 .text-secondary {
   font-size: 1.5rem;
   color: rgb(172, 155, 151);
+}
+
+.btn {
+  background: -moz-linear-gradient(left, #025f8e, #0286cd);
+  background: -o-linear-gradient(left, #025f8e, #0286cd);
+  background: -ms-linear-gradient(left, #025f8e, #0286cd);
+  background: linear-gradient(to right, #025f8e, #0286cd);
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  padding: 1rem;
+  display: flex;
+  background: linear-gradient(to right, #20af3f, #02cd6e);
+  color: white;
+  line-height: 2rem;
+  align-items: center;
+  gap: 7px;
+  text-transform: uppercase;
+  transition: all 0.6s ease;
+  &:hover {
+    background: linear-gradient(to right, #096897, #0871aa);
+  }
 }
