@@ -2,27 +2,56 @@ import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import { firestore } from "../../firebase/utils";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getPostRatingStart,
+  resetRatingState,
+  handleStarStart,
+} from "../../redux/Rating/rating.actions";
+import {
+  selectReviewsCount,
+  selectAverageCount,
+} from "../../redux/Rating/rating.selectors";
+import { createStructuredSelector } from "reselect";
+
+const mapState = ({ user, ratingData }) => ({
+  displayName: user.currentUser?.displayName,
+  sagaRating: ratingData.postRating,
+});
+
+const selectState = createStructuredSelector({
+  reviewsCount: selectReviewsCount,
+  averageCount: selectAverageCount,
+});
 
 const rating = new Array(5).fill(<AiOutlineStar size="20" />);
 
-function StarRating({ productRate = null, title_visibility, documentID }) {
-  const [firebaseRating, setFirebaseRating] = useState(null);
+function StarRating({ titleVisibility, documentID }) {
+  const { displayName, sagaRating } = useSelector(mapState);
+  const { reviewsCount, averageCount } = useSelector(selectState);
   const [stars, setStars] = useState(rating);
-  const [selectedStar, setSelectedStar] = useState(productRate);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let newRating = rating.map((s, index) => {
-      if (index + 1 <= selectedStar) {
+      if (index + 1 <= Math.round(averageCount)) {
         return <AiFillStar size="20" />;
       }
       return s;
     });
 
     setStars(newRating);
-  }, [selectedStar]);
+  }, [sagaRating]);
+
+  useEffect(() => {
+    dispatch(getPostRatingStart(documentID));
+    return () => dispatch(resetRatingState());
+  }, [documentID]);
 
   const handleClick = (index) => {
-    setSelectedStar(index + 1);
+    if (!displayName) return;
+    dispatch(handleStarStart({ sagaRating, displayName, index, documentID }));
   };
 
   return (
@@ -34,8 +63,10 @@ function StarRating({ productRate = null, title_visibility, documentID }) {
           </span>
         ))}
       </div>
-      {title_visibility && (
-        <p className="rating__rewiews-number">3.5 from 272 reviews</p>
+      {titleVisibility && (
+        <p className="rating__rewiews-number">
+          {averageCount} from {reviewsCount} reviews
+        </p>
       )}
     </div>
   );

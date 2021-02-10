@@ -56,7 +56,7 @@ function ProductCard() {
   };
 
   const configStarRating = {
-    title_visibility: "blah blah",
+    titleVisibility: true,
     documentID,
   };
 

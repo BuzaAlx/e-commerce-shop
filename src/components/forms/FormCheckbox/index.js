@@ -25,12 +25,12 @@ const FormCheckbox = ({
     <div className="checkbox formRow">
       {label && <label>{label}</label>}
       <div className="checkbox__inner">
-        {options.map((o) => {
+        {options.map((opt) => {
           return (
             <>
               <label name="asd" className="checkbox__label">
-                {o}
-                <input name={o} type="checkbox" onChange={handleCheckBox} />
+                {opt}
+                <input name={opt} type="checkbox" onChange={handleCheckBox} />
               </label>
             </>
           );

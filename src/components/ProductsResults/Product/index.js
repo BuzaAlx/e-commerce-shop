@@ -58,9 +58,6 @@ const Product = (product) => {
               </Link>
             </span>
           </div>
-          <div className="list-product__stars-rating">
-            <StarRating />
-          </div>
         </div>
         {/* //////////////////// */}
         <div className="list-product__wrapper list-product__wrapper--bottom">
