@@ -67,3 +67,20 @@
     float: right;
   }
 }
+
+@media (max-width: 768px) {
+  .checkout {
+    .checkoutHeader {
+      font-size: 1.4rem;
+    }
+    .card {
+      td {
+        font-size: 1.5rem;
+      }
+    }
+    .table-button {
+      width: 100px;
+      height: 40px;
+    }
+  }
+}

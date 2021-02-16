@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
+import classNames from "classnames";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsCardChecklist } from "react-icons/bs";
+import {
+  selectSelectedProductRating,
+  selectSelectedProductReviewsCount,
+  selectSelectedProductAverageCount,
+} from "../../redux/Products/products.selectors";
+
 import {
   fetchProductStart,
   setProduct,
@@ -10,15 +19,7 @@ import { addProduct } from "../../redux/Card/card.actions";
 import ProductMark from "../ProductMark";
 import StarRating from "../StarRating";
 import SizePanel from "../SizePanel";
-import classNames from "classnames";
-
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BsCardChecklist } from "react-icons/bs";
-import {
-  selectSelectedProductRating,
-  selectSelectedProductReviewsCount,
-  selectSelectedProductAverageCount,
-} from "../../redux/Products/products.selectors";
+import Loading from "../LoadingComponent";
 
 import { handleSelectedProductRateStart } from "../../redux/Products/products.actions";
 
@@ -82,7 +83,7 @@ function ProductCard() {
     history.push("/card");
   };
 
-  if (loading) return <h1 style={{ color: "white" }}>LOADING...</h1>;
+  if (loading) return <Loading />;
 
   return (
     <div className="productCard fade-anim">
@@ -139,6 +140,11 @@ function ProductCard() {
               />
             </li>
             <li className="productCard__row">
+              <div className="back-to-list btn">
+                <Link to="/search">
+                  <BsCardChecklist size="20" /> back to product list
+                </Link>
+              </div>
               <div
                 className="add-to-card btn"
                 onClick={() =>
@@ -147,11 +153,6 @@ function ProductCard() {
               >
                 <AiOutlineShoppingCart size="20" />
                 <span>Add to card</span>
-              </div>
-              <div className="back-to-list btn">
-                <Link to="/search">
-                  <BsCardChecklist size="20" /> back to product list
-                </Link>
               </div>
             </li>
           </ul>

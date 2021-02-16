@@ -41,10 +41,10 @@ function Basket() {
                     <tr>
                       <th>Product</th>
                       <th>Description</th>
-                      <th>quantity</th>
-                      <th>size</th>
-                      <th>price</th>
-                      <th>remove</th>
+                      <th>Quantity</th>
+                      <th>Size</th>
+                      <th>Price</th>
+                      <th>Delete</th>
                     </tr>
                   </tbody>
                 </table>

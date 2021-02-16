@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import "./styles.scss";
 import { signOutUserStart } from "./../../redux/User/user.actions";
 import { selectCardItemsCount } from "../../redux/Card/card.selectors";
-// import { FiRotateCw } from "react-icons/fi";
+import classNames from "classnames";
+import { FaBars } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -13,6 +15,7 @@ const mapState = (state) => ({
 });
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const { currentUser, totalNumCardItems } = useSelector(mapState);
 
@@ -29,7 +32,12 @@ function Header() {
               <img src="logo.jpg" alt="logo" />
             </Link>
           </div>
-          <nav className="header__navigation">
+          <nav
+            className={classNames({
+              header__navigation: true,
+              visible: isMenuOpen,
+            })}
+          >
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -81,6 +89,21 @@ function Header() {
                     <Link to="/login">Login</Link>
                   </li>
                 </>
+              )}
+              {isMenuOpen ? (
+                <li
+                  className="user-panel__menu-burger"
+                  onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+                >
+                  <GrClose />
+                </li>
+              ) : (
+                <li
+                  className="user-panel__menu-burger"
+                  onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+                >
+                  <FaBars />
+                </li>
               )}
             </ul>
           </div>

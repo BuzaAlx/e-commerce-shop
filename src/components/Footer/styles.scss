@@ -61,3 +61,12 @@
     transform: rotate(35deg) scale(1.1);
   }
 }
+
+@media (max-width: 768px) {
+  .footer {
+    .footer__contacts-block,
+    .footer__map-block {
+      display: none;
+    }
+  }
+}

@@ -104,7 +104,7 @@ const Product = (product) => {
             <span className="price text-alarm">{productPrice}$</span>
           </div>
           <div className="list-product__row">
-            <span className="available">Is available</span>
+            <span className="available">Sizes :</span>
             <SizePanel
               sizes={availableSizes}
               setSelectedSize={setSelectedSize}

@@ -2,6 +2,12 @@ html {
   font-size: 10px;
 }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 8px;
+  }
+}
+
 html,
 body {
   padding: 0;
@@ -15,9 +21,12 @@ body {
 html,
 body,
 #root,
-.App,
 .fullHeight {
   height: 100%;
+}
+
+.App {
+  overflow: hidden;
 }
 
 *,
@@ -61,19 +70,6 @@ a:hover {
   margin: 0 auto;
 }
 
-// .btn {
-//   line-height: 2rem;
-//   padding: 1rem 2rem;
-//   background-color: black;
-//   text-transform: uppercase;
-//   color: white;
-//   font-size: 1.2rem;
-//   &:hover {
-//     background-color: white;
-//     color: black;
-//   }
-// }
-
 .mainLoyoutContent {
   background: linear-gradient(0.25turn, #383838, #000000);
   border-top: 1px solid transparent;
@@ -82,7 +78,7 @@ a:hover {
 }
 
 .secondaryLoyoutContent {
-  background: url(backgrounds/fon.jpg) left 0% top 0% / 60%;
+  background: linear-gradient(45deg, black, transparent);
   min-height: calc(100vh - 7rem);
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
@@ -109,7 +105,7 @@ a:hover {
   }
 
   .content {
-    padding: 0 10px;
+    padding: 1rem;
   }
 }
 
@@ -117,7 +113,18 @@ a:hover {
   height: calc(100% - 6.5rem - 5.8rem - 3.6rem);
 }
 
-//////////////// ANIMATIONS
+@media (max-width: 768px) {
+  .adminLayout {
+    .controlPanel {
+      padding: 0;
+      .sidebar {
+        display: none;
+      }
+    }
+  }
+}
+
+/// ANIMATIONS
 
 .fade-anim {
   position: relative;
@@ -153,18 +160,6 @@ a:hover {
     transform: translate(-100%);
     opacity: 0;
   }
-}
-
-///// SOME
-
-.unselectable {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  not supported by any browser */
 }
 
 ////variables

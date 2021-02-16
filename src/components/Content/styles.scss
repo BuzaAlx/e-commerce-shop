@@ -9,6 +9,7 @@
 .product__row {
   display: flex;
   justify-content: space-around;
+  gap: 1rem;
 }
 
 .product__column-description {
@@ -106,6 +107,25 @@
   animation: loop 2s infinite;
   animation-delay: none;
 }
+
+@media (max-width: 768px) {
+  .product__row {
+    flex-direction: column;
+  }
+  .product__images-box {
+    width: auto;
+    padding: 2rem;
+    margin-top: auto;
+  }
+  .product__description {
+    margin: 2rem;
+  }
+  .product__image {
+    width: 42rem;
+    height: 27rem;
+  }
+}
+
 @keyframes loop {
   0% {
     transform: translateY(0);

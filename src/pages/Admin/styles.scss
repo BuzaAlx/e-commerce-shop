@@ -49,3 +49,18 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .manageProducts {
+    table.results {
+      tr {
+        .thumb {
+          width: 5rem;
+        }
+      }
+    }
+    table {
+      width: 100%;
+    }
+  }
+}
