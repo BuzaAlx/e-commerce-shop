@@ -30,3 +30,37 @@ export const setProduct = (product) => ({
   type: productsTypes.SET_PRODUCT,
   payload: product,
 });
+
+export const setIsLoading = (payload) => ({
+  type: productsTypes.IS_LOADING,
+  payload: payload,
+});
+
+/////////////////
+
+export const getProductRatingStart = (payload) => ({
+  type: productsTypes.GET_PRODUCT_RATING_START,
+  payload: payload,
+});
+
+export const setProductRating = (payload) => ({
+  type: productsTypes.SET_PRODUCT_RATING,
+  payload: payload,
+});
+
+export const setSelectedProductRating = (payload) => ({
+  type: productsTypes.SET_SELECTED_PRODUCT_RATING,
+  payload: payload,
+});
+
+///////////////
+
+export const handleRateStart = (payload) => ({
+  type: productsTypes.HANDLE_RATE_START,
+  payload: payload,
+});
+
+export const handleSelectedProductRateStart = (payload) => ({
+  type: productsTypes.HANDLE_SELECTED_PRODUCT_RATE_START,
+  payload: payload,
+});

@@ -28,15 +28,27 @@ function ProductsResults({}) {
     history.push(`/search/${nextFilter}`);
   };
 
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        filterType,
+        persistProducts: data,
+        startAfterDoc: queryDoc,
+      })
+    );
+  };
+
   if (!Array.isArray(data)) return null;
 
-  if (data.length < 1) {
-    return (
-      <div className="products">
-        <p>No search results.</p>
-      </div>
-    );
-  }
+  const validateData = ({ productThumbnail, productName, productPrice }) => {
+    if (
+      !productThumbnail ||
+      !productName ||
+      typeof productPrice === "undefined"
+    ) {
+      return false;
+    }
+  };
 
   const configFilters = {
     defaultValue: filterType,
@@ -57,39 +69,30 @@ function ProductsResults({}) {
     handleChange: handleFilter,
   };
 
-  const handleLoadMore = () => {
-    dispatch(
-      fetchProductsStart({
-        filterType,
-        persistProducts: data,
-        startAfterDoc: queryDoc,
-      })
-    );
-  };
-
   const configLoadMore = {
     onLoadMoreEvt: handleLoadMore,
   };
 
+  if (data.length < 1) {
+    return (
+      <div className="products">
+        <p>No search results.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="products">
       <h1 className="transition-left-anim">Browse Products</h1>
-      <FormSelect {...configFilters} className="secondary" />
+      <FormSelect {...configFilters} className="secondary fade-anim" />
       <div className="productsResults fade-anim">
-        {data.map((product, pos) => {
-          const { productThumbnail, productName, productPrice } = product;
-          if (
-            !productThumbnail ||
-            !productName ||
-            typeof productPrice === "undefined"
-          ) {
+        {data.map((product) => {
+          if (validateData(product)) {
             return null;
           }
-
           const configProduct = {
             ...product,
           };
-
           return <Product {...configProduct} />;
         })}
       </div>

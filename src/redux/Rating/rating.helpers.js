@@ -17,14 +17,14 @@ export const handleFetchRating = (documentID) => {
 };
 
 export const handleStarClick = ({
-  sagaRating,
+  productRating,
   displayName,
   index,
   documentID,
 }) => {
   return new Promise((resolve, reject) => {
-    const found = sagaRating.find((el) => el.username === displayName);
-    console.log({ sagaRating, displayName, index, documentID });
+    const found = productRating.find((el) => el.username === displayName);
+    console.log({ productRating, displayName, index, documentID });
     console.log(found);
 
     if (found) {

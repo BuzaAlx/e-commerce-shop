@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineEllipsis, AiOutlineShoppingCart } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
 
 import { addProduct } from "../../../redux/Card/card.actions";
 import StarRating from "../../StarRating";
 import SizePanel from "../../SizePanel";
 import ProductMark from "../../ProductMark";
+import {
+  selectReviewsCount,
+  selectAverageCount,
+  selectProductRating,
+} from "../../../redux/Products/products.selectors";
+import { handleRateStart } from "../../../redux/Products/products.actions";
 
 const Product = (product) => {
+  const mapStateToRatingData = (state) => {
+    return {
+      rewivsCount: selectReviewsCount(state, product.documentID),
+      averageCount: selectAverageCount(state, product.documentID),
+      productRating: selectProductRating(state, product.documentID),
+    };
+  };
+
+  const { rewivsCount, averageCount, productRating } = useSelector(
+    mapStateToRatingData
+  );
+
+  ////////////////
   const [selectedSize, setSelectedSize] = useState("M");
 
   const dispatch = useDispatch();
@@ -38,7 +57,18 @@ const Product = (product) => {
     history.push("/card");
   };
 
-  const sizes = ["XS", "S", "M", "L", "XL", "XXL"]; //TODO store it in db product , if abailavle return size is NON return "line-through"
+  const configStarRating = {
+    handleClick: handleRateStart,
+    titleVisibility: true,
+    documentID,
+    rewivsCount,
+    averageCount,
+    productRating,
+  };
+
+  // const getRating = () => {
+
+  // }
 
   return (
     <div className="list_product">
@@ -60,9 +90,15 @@ const Product = (product) => {
           </div>
         </div>
         {/* //////////////////// */}
+        <StarRating {...configStarRating} />
         <div className="list-product__wrapper list-product__wrapper--bottom">
           <div>
-            <span className="previousPrice text-secondary ">2000 $</span>
+            <span
+              onClick={() => console.log({ rewivsCount, averageCount })}
+              className="previousPrice text-secondary "
+            >
+              2000 $
+            </span>
           </div>
           <div>
             <span className="price text-alarm">{productPrice}$</span>

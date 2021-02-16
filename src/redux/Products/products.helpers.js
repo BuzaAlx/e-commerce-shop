@@ -92,3 +92,78 @@ export const handleFetchProduct = (productID) => {
       });
   });
 };
+
+export const handleFetchProductRating = (documentID) => {
+  return new Promise((resolve, reject) => {
+    try {
+      firestore
+        .collection("products")
+        .doc(documentID)
+        .collection("rating")
+        .onSnapshot((snapshot) => {
+          resolve(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        });
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const addRating = (products) => {
+  let productsCopy = { ...products };
+
+  let newProductData = products.data.map(async (element) => {
+    const result = await handleFetchProductRating(element.documentID);
+    return {
+      ...element,
+      rating: result,
+    };
+  });
+
+  let productsWithRating = Promise.all(newProductData).then((data) => {
+    return {
+      ...productsCopy,
+      data,
+    };
+  });
+  return productsWithRating;
+};
+
+export const handleStarClick = ({
+  productRating,
+  displayName,
+  index,
+  documentID,
+}) => {
+  return new Promise((resolve, reject) => {
+    const found = productRating.find((el) => el.username === displayName);
+    console.log({ productRating, displayName, index, documentID });
+    console.log(found);
+
+    if (found) {
+      firestore
+        .collection("products")
+        .doc(documentID)
+        .collection("rating")
+        .doc(found.id)
+        .set({
+          username: displayName,
+          rating: index + 1,
+        });
+      resolve(documentID);
+    }
+
+    if (!found) {
+      firestore
+        .collection("products")
+        .doc(documentID)
+        .collection("rating")
+        .doc()
+        .set({
+          username: displayName,
+          rating: index + 1,
+        });
+      resolve(documentID);
+    }
+  });
+};

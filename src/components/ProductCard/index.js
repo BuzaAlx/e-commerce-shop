@@ -14,9 +14,17 @@ import classNames from "classnames";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsCardChecklist } from "react-icons/bs";
+import {
+  selectSelectedProductRating,
+  selectSelectedProductReviewsCount,
+  selectSelectedProductAverageCount,
+} from "../../redux/Products/products.selectors";
+
+import { handleSelectedProductRateStart } from "../../redux/Products/products.actions";
 
 const mapState = ({ productsData }) => ({
   product: productsData.product,
+  loading: productsData.loading,
 });
 
 function ProductCard() {
@@ -26,7 +34,8 @@ function ProductCard() {
   const history = useHistory();
 
   const { productID } = useParams();
-  const { product } = useSelector(mapState);
+
+  const { product, loading } = useSelector(mapState);
 
   const {
     productName,
@@ -41,23 +50,30 @@ function ProductCard() {
 
   useEffect(() => {
     dispatch(fetchProductStart(productID));
-
     return () => {
       dispatch(setProduct({}));
     };
   }, []);
 
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
-
-  const configProductMark = {
-    type: "ends",
+  const mapStateToRatingData = (state) => {
+    return {
+      rewivsCount: selectSelectedProductReviewsCount(state),
+      averageCount: selectSelectedProductAverageCount(state),
+      productRating: selectSelectedProductRating(state),
+    };
   };
 
+  const { rewivsCount, averageCount, productRating } = useSelector(
+    mapStateToRatingData
+  );
+
   const configStarRating = {
+    handleClick: handleSelectedProductRateStart,
     titleVisibility: true,
     documentID,
+    rewivsCount,
+    averageCount,
+    productRating,
   };
 
   const handleAddToCard = (product) => {
@@ -65,6 +81,8 @@ function ProductCard() {
     dispatch(addProduct(product));
     history.push("/card");
   };
+
+  if (loading) return <h1 style={{ color: "white" }}>LOADING...</h1>;
 
   return (
     <div className="productCard fade-anim">

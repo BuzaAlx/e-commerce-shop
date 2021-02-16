@@ -9,27 +9,24 @@ import {
   resetRatingState,
   handleStarStart,
 } from "../../redux/Rating/rating.actions";
-import {
-  selectReviewsCount,
-  selectAverageCount,
-} from "../../redux/Rating/rating.selectors";
-import { createStructuredSelector } from "reselect";
+
+import { handleRateStart } from "../../redux/Products/products.actions";
 
 const mapState = ({ user, ratingData }) => ({
   displayName: user.currentUser?.displayName,
   sagaRating: ratingData.postRating,
 });
-
-const selectState = createStructuredSelector({
-  reviewsCount: selectReviewsCount,
-  averageCount: selectAverageCount,
-});
-
 const rating = new Array(5).fill(<AiOutlineStar size="20" />);
 
-function StarRating({ titleVisibility, documentID }) {
-  const { displayName, sagaRating } = useSelector(mapState);
-  const { reviewsCount, averageCount } = useSelector(selectState);
+function StarRating({
+  titleVisibility,
+  documentID,
+  rewivsCount,
+  averageCount,
+  productRating,
+  handleClick,
+}) {
+  const { displayName } = useSelector(mapState);
   const [stars, setStars] = useState(rating);
   const dispatch = useDispatch();
 
@@ -42,30 +39,31 @@ function StarRating({ titleVisibility, documentID }) {
     });
 
     setStars(newRating);
-  }, [sagaRating]);
+  }, [productRating]);
 
-  useEffect(() => {
-    dispatch(getPostRatingStart(documentID));
-    return () => dispatch(resetRatingState());
-  }, [documentID]);
-
-  const handleClick = (index) => {
+  const handleRate = (index) => {
     if (!displayName) return;
-    dispatch(handleStarStart({ sagaRating, displayName, index, documentID }));
+    dispatch(handleClick({ productRating, displayName, index, documentID }));
   };
 
   return (
     <div className="rating">
       <div className="rating__icons">
         {stars?.map((obj, index) => (
-          <span className="rating__icon" onClick={() => handleClick(index)}>
+          <span className="rating__icon" onClick={() => handleRate(index)}>
             {obj}
           </span>
         ))}
       </div>
       {titleVisibility && (
         <p className="rating__rewiews-number">
-          {averageCount} from {reviewsCount} reviews
+          {rewivsCount > 0 ? (
+            <span>
+              {averageCount} from {rewivsCount} reviews
+            </span>
+          ) : (
+            <span>Be the first who estimate!</span>
+          )}
         </p>
       )}
     </div>

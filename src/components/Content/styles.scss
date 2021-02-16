@@ -46,7 +46,7 @@
   object-fit: cover;
   box-shadow: 10px 10px rgba(0, 255, 255, 0.3);
   background-color: black;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .product__images-box {

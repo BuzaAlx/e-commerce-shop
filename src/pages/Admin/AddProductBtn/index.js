@@ -96,6 +96,10 @@ function AddProductBtn() {
                     value: "womens",
                     name: "Womens",
                   },
+                  {
+                    value: "children",
+                    name: "Children",
+                  },
                 ]}
                 handleChange={(e) => setProductCategory(e.target.value)}
               />

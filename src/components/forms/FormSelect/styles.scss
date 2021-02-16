@@ -23,7 +23,10 @@
     cursor: pointer;
   }
   .secondary {
-    color: white;
-    background-color: rgba(102, 51, 153, 0.781);
+    color: rgb(0, 0, 0);
+    background-color: #d6d6d699;
+    font-size: 1.8rem;
+    padding: 20px;
+    text-transform: uppercase;
   }
 }

@@ -69,13 +69,14 @@
 }
 
 .user-panel__number-goods {
-  width: 15px;
-  height: 15px;
-  background-color: rebeccapurple;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #e82c6c;
   border-radius: 50%;
   position: absolute;
   top: -10px;
-  right: -5px;
+  right: -10px;
   color: white;
   text-align: center;
 }

@@ -75,7 +75,7 @@ a:hover {
 // }
 
 .mainLoyoutContent {
-  background: linear-gradient(0.25turn, #383838, #9198e5);
+  background: linear-gradient(0.25turn, #383838, #000000);
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   min-height: calc(100vh - 7rem);
@@ -180,15 +180,14 @@ a:hover {
 }
 
 .btn {
-  background: -moz-linear-gradient(left, #025f8e, #0286cd);
-  background: -o-linear-gradient(left, #025f8e, #0286cd);
-  background: -ms-linear-gradient(left, #025f8e, #0286cd);
-  background: linear-gradient(to right, #025f8e, #0286cd);
+  background: -moz-linear-gradient(left, #000000, #646766);
+  background: -o-linear-gradient(left, #000000, #646766);
+  background: -ms-linear-gradient(left, #000000, #646766);
+  background: linear-gradient(to right, #000000, #646766);
   font-family: "Roboto", sans-serif;
   font-weight: 900;
   padding: 1rem;
   display: flex;
-  background: linear-gradient(to right, #20af3f, #02cd6e);
   color: white;
   line-height: 2rem;
   align-items: center;
