@@ -83,17 +83,16 @@ function ProductsResults({}) {
 
   return (
     <div className="products">
-      <h1 className="transition-left-anim">Browse Products</h1>
+      <h1 className="transition-left-anim">
+        {filterType ? `${filterType} Products` : "All Products"}
+      </h1>
       <FormSelect {...configFilters} className="secondary fade-anim" />
       <div className="productsResults fade-anim">
         {data.map((product) => {
           if (validateData(product)) {
             return null;
           }
-          const configProduct = {
-            ...product,
-          };
-          return <Product {...configProduct} />;
+          return <Product key={product.documentID} {...product} />;
         })}
       </div>
       {!isLastPage && <LoadMore {...configLoadMore} />}

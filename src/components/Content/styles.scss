@@ -83,21 +83,46 @@
 
 /////////
 
-.product__image-container:nth-child(even) {
+.product__image-container {
   position: relative;
+  animation-delay: none;
+  cursor: pointer;
+}
+
+.product__image-container:nth-child(even) {
   -webkit-animation: toLeft 2s reverse; /* Chrome, Safari, Opera */
   -webkit-animation-delay: none; /* Chrome, Safari, Opera */
   animation: toLeft 2s reverse;
-  animation-delay: none;
 }
 
 .product__image-container:nth-child(odd) {
   align-self: flex-end;
-  position: relative;
+
   -webkit-animation: toRight 2s reverse; /* Chrome, Safari, Opera */
   -webkit-animation-delay: none; /* Chrome, Safari, Opera */
   animation: toRight 2s reverse;
-  animation-delay: none;
+}
+
+.product__inner {
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 3.5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32rem;
+  height: 100%;
+  top: 0;
+  transition: all 0.2s ease;
+  color: #373737;
+  text-align: center;
+  line-height: 100%;
+  text-transform: uppercase;
+  &:hover {
+    color: white;
+    background-color: rgba(0, 217, 255, 0.5);
+  }
 }
 
 .pointer-icon {

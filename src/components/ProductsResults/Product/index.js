@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineEllipsis, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdFavoriteBorder } from "react-icons/md";
 
 import { addProduct } from "../../../redux/Card/card.actions";
@@ -66,10 +66,6 @@ const Product = (product) => {
     productRating,
   };
 
-  // const getRating = () => {
-
-  // }
-
   return (
     <div className="list_product">
       <div className="thumb">
@@ -78,7 +74,6 @@ const Product = (product) => {
         </Link>
       </div>
       <div className="details">
-        {/* ///////////////// */}
         <div className="list-product__wrapper">
           <div className="list_product__title">
             <span className="name">
@@ -89,7 +84,6 @@ const Product = (product) => {
             </span>
           </div>
         </div>
-        {/* //////////////////// */}
         <StarRating {...configStarRating} />
         <div className="list-product__wrapper list-product__wrapper--bottom">
           <div>

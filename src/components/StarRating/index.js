@@ -2,15 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
-import { firestore } from "../../firebase/utils";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  getPostRatingStart,
-  resetRatingState,
-  handleStarStart,
-} from "../../redux/Rating/rating.actions";
-
-import { handleRateStart } from "../../redux/Products/products.actions";
 
 const mapState = ({ user, ratingData }) => ({
   displayName: user.currentUser?.displayName,
@@ -33,13 +25,13 @@ function StarRating({
   useEffect(() => {
     let newRating = rating.map((s, index) => {
       if (index + 1 <= Math.round(averageCount)) {
-        return <AiFillStar size="20" />;
+        return <AiFillStar key={index} size="20" />;
       }
       return s;
     });
 
     setStars(newRating);
-  }, [productRating]);
+  }, [productRating, averageCount]);
 
   const handleRate = (index) => {
     if (!displayName) return;
@@ -50,7 +42,11 @@ function StarRating({
     <div className="rating">
       <div className="rating__icons">
         {stars?.map((obj, index) => (
-          <span className="rating__icon" onClick={() => handleRate(index)}>
+          <span
+            key={index}
+            className="rating__icon"
+            onClick={() => handleRate(index)}
+          >
             {obj}
           </span>
         ))}

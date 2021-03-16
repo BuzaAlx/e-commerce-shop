@@ -29,7 +29,10 @@ function Header() {
         <div className="header__row">
           <div className="logo-container">
             <Link to="/">
-              <img src="logo.jpg" alt="logo" />
+              <img
+                src="https://i.postimg.cc/XJcms1Xj/ee2299a4d7eae72326fef11689c5df49.png"
+                alt="logo"
+              />
             </Link>
           </div>
           <nav
@@ -47,19 +50,16 @@ function Header() {
                 <Link to="/search">Search</Link>
               </li>
               <li>
-                <Link>About Us</Link>
+                <Link to="#">About Us</Link>
               </li>
               <li>
-                <Link>Blog</Link>
+                <Link to="#">Blog</Link>
               </li>
               <li>
-                <Link>Contact Us</Link>
+                <Link to="#">Contact Us</Link>
               </li>
             </ul>
           </nav>
-          {/* <div className="logo-container">
-            <img src="./logo.png" alt="" />
-          </div> */}
           <div className="user-panel">
             <ul>
               <Link to="/card" className="user-panel__basket-link">

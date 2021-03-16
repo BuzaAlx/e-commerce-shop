@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.scss";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signOutUserStart } from "../../redux/User/user.actions";
